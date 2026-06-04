@@ -1,0 +1,29 @@
+{
+  "collapse-filter": true,
+  "search": "-path:_templates",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    { "query": "path:sources/",    "color": { "a": 1, "rgb": 3066993 } },
+    { "query": "path:authors/",    "color": { "a": 1, "rgb": 10181814 } },
+    { "query": "path:frameworks/", "color": { "a": 1, "rgb": 4620980 } },
+    { "query": "path:concepts/",   "color": { "a": 1, "rgb": 16761095 } },
+    { "query": "path:syntheses/ OR path:playbooks/ OR path:campaigns/", "color": { "a": 1, "rgb": 16738406 } },
+    { "query": "path:index.md OR path:log.md OR path:README.md OR path:CLAUDE.md OR path:AGENTS.md", "color": { "a": 1, "rgb": 9807782 } }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.5,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.7,
+  "close": true
+}

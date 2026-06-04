@@ -1,0 +1,91 @@
+# CLAUDE.md — {{PROJECT_NAME}} Wiki LLM Schema
+
+This file is the operating manual for any LLM working in this repo. Read it at the start of every session. It defines the architecture, conventions, page templates, and workflows that keep the wiki coherent across sessions.
+
+> **Mirror with `AGENTS.md`.** Keep `CLAUDE.md` and `AGENTS.md` byte-identical so non-Claude agents (Codex, Gemini, Aider, Cursor) follow the same rules. Any edit to one applies to the other in the same change.
+
+> **Self-contained repo.** Everything an LLM needs lives in this folder, including `.memory/`. The repo travels as a unit.
+
+---
+
+## The Hard Boundary: Wiki vs. Output
+
+The most important rule. Internalize it before doing anything.
+
+- **`{{WIKI_DIR}}/` is STRICTLY extraction** from the sources in `{{RAW_DIR}}/`. Each page describes what the sources say and how they relate. Cross-source "How different sources frame it" sections are extraction (a catalog of positions). Pages may note tensions/contradictions but may not adjudicate, editorialize, or argue a position the sources don't supply.
+- **`{{OUTPUT_DIR}}/` is everything else the LLM produces** — syntheses, comparisons, blueprints, recommendations, decks, briefs, lint reports. Anything editorial/applied.
+
+If you'd write a `> Editorial:` claim or a "what should we do / what does the corpus collectively argue" line, it belongs in `{{OUTPUT_DIR}}/`. The wiki must stay pure extraction so it can be cited as the substrate of any synthesis.
+
+---
+
+## North-Star Purpose
+
+{{ONE_PARAGRAPH: what this wiki is for and what work it must eventually support.}}
+
+The wiki is a **persistent, compounding artifact** — compiled once from `{{RAW_DIR}}/` and kept current, never re-derived per query.
+
+---
+
+## Architecture
+
+| Layer | Path | Owner | Mutability |
+|---|---|---|---|
+| Raw sources | `{{RAW_DIR}}/` | human curates | **immutable** |
+| The wiki (extraction) | `{{WIKI_DIR}}/` | LLM | extraction only |
+| Output (synthesis) | `{{OUTPUT_DIR}}/` | LLM | editorial/applied |
+| Memory | `.memory/` | LLM | cross-session, in-repo |
+| Schema | `CLAUDE.md` + `AGENTS.md` | co-evolved | mirrored |
+
+{{OPTIONAL: if sources are grouped into categories, preserve the taxonomy as a `notebook:` frontmatter field, list the notebook slugs here.}}
+
+## Wiki folder structure
+
+```
+{{WIKI_DIR}}/
+├── index.md            ← content catalog (update every ingest)
+├── log.md              ← append-only chronological record
+├── _templates/         ← page templates
+├── sources/            ← one page per document
+├── {{ENTITY_DIR}}/     ← one page per person/org/entity (e.g. authors/)
+├── concepts/           ← one page per idea/theme
+└── frameworks/         ← one page per named model/system
+{{OUTPUT_DIR}}/
+├── _templates/synthesis.md
+├── syntheses/  decks/  ...   ← whatever the project produces
+```
+
+Folder rule: person/entity→`{{ENTITY_DIR}}/`; named model→`frameworks/`; idea→`concepts/`; a document→`sources/`. In doubt (editorial?) → `{{OUTPUT_DIR}}/`.
+
+## File naming
+Lowercase, hyphenated, no special chars. Disambiguate slug collisions (a source titled the same as a concept → suffix the source slug).
+
+## Frontmatter (every page)
+```yaml
+---
+title: "Human-readable title"
+type: source | {{entity}} | concept | framework | synthesis
+cssclasses: [<type>]
+tags: []
+created: {{DATE}}
+updated: {{DATE}}
+---
+```
+`cssclasses` must equal `type` so the page is color-coded. Source pages also carry `source-file:` (path into `{{RAW_DIR}}/`) for traceback.
+
+## Wikilink discipline
+`[[slug]]` for every entity reference — no bare names. Link first occurrence per H2. Ghost links to unwritten pages are encouraged (they surface gaps). Aim for bidirectional density.
+
+## Raw-traceback protocol
+Wiki is the working surface; raw files are the verbatim backstop. Read wiki pages first; open a raw file only for a longer/exact quote, to verify a paraphrase, or for exact page numbers. Quotes are short + page-cited: `> "quote" — *[[slug|Title]]*, p.N`. Full passages stay in `{{RAW_DIR}}/`.
+
+## Operations
+- **Ingest** — read source → write source page → create/update entity/concept/framework pages → update `index.md` → append `log.md` (`## [YYYY-MM-DD] ingest | Title`). Typical: 8–15 pages touched.
+- **Query** — read `index.md`, follow `[[links]]`, cite pages; file substantive answers into `{{OUTPUT_DIR}}/`.
+- **Lint** — scan for contradictions, orphans, ghost links, sparse/stale pages → report in `{{OUTPUT_DIR}}/`.
+
+## What NOT to do
+- Never modify `{{RAW_DIR}}/`. Never read anything but `{{RAW_DIR}}/` into the wiki. Never put synthesis in the wiki. Never skip frontmatter. Never use bare names. Never fabricate quotes. Log every ingest. Keep `CLAUDE.md`/`AGENTS.md` identical.
+
+## Session start
+1. Read this file. 2. Read `.memory/MEMORY.md`. 3. Read `{{WIKI_DIR}}/index.md`. 4. Read last ~10 entries of `log.md`. 5. Proceed.

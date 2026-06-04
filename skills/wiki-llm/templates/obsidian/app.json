@@ -1,0 +1,11 @@
+{
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "attachmentFolderPath": "Wiki_LLM/_attachments",
+  "userIgnoreFilters": ["_templates/"],
+  "promptDelete": true,
+  "trashOption": "system",
+  "showLineNumber": true,
+  "propertiesInDocument": "visible"
+}

@@ -1,0 +1,40 @@
+/* ============================================================
+   Wiki LLM — color-coded page types (mirrors graph.json).
+   Driven by `cssclasses:` frontmatter on every page:
+     cssclasses: [source|author|framework|concept|synthesis]
+   Enable: Settings -> Appearance -> CSS snippets -> wiki-colors.
+   ============================================================ */
+
+.source    { --wiki-type-color: #2ecc71; } /* emerald — sources    */
+.author    { --wiki-type-color: #9b59b6; } /* plum    — authors    */
+.framework { --wiki-type-color: #468fb4; } /* steel   — frameworks */
+.concept   { --wiki-type-color: #ffc107; } /* amber   — concepts   */
+.synthesis { --wiki-type-color: #ff6b66; } /* coral   — output     */
+
+.source .inline-title, .author .inline-title, .framework .inline-title,
+.concept .inline-title, .synthesis .inline-title,
+.source.markdown-preview-view h1:first-of-type,
+.author.markdown-preview-view h1:first-of-type,
+.framework.markdown-preview-view h1:first-of-type,
+.concept.markdown-preview-view h1:first-of-type,
+.synthesis.markdown-preview-view h1:first-of-type {
+  border-left: 6px solid var(--wiki-type-color);
+  padding-left: 0.55em;
+  border-radius: 2px;
+}
+
+.source .metadata-container, .author .metadata-container,
+.framework .metadata-container, .concept .metadata-container,
+.synthesis .metadata-container {
+  border: 1px solid var(--wiki-type-color);
+  border-left: 5px solid var(--wiki-type-color);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--wiki-type-color) 7%, transparent);
+}
+
+/* Ghost (unresolved) links — gaps to fill on the next lint pass */
+.markdown-preview-view a.internal-link.is-unresolved,
+.cm-hmd-internal-link.is-unresolved {
+  color: #b08968;
+  text-decoration: underline dotted;
+}
