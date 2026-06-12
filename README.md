@@ -50,3 +50,20 @@ Then just ask: *"build a wiki LLM from these PDFs"* or *"generate a hero image o
 ## License
 
 MIT — see [LICENSE](LICENSE). Use it, fork it, share it.
+
+## Starter kits
+
+### `maya-starter/` - Your Automated Social Media Content Team
+
+The complete starter kit for the AIAI Mastermind course "Your Automated Social Media Content Team". It sets up MAYA, the AI agent that runs your content team, with Codex as the copywriter and designer she manages.
+
+Includes: MAYA's standing instructions (CLAUDE.md), a fill-in-the-blanks job description brief, a compliance knowledge-base template, three content-lane skills (newsjacking, problem-solution, entertain), a compliance-check skill, a Mai Marketing Machine posting skill, an image and brand skill, and the brain folder where your My Agency Context document lives.
+
+Setup (covered step by step in the course):
+
+```bash
+git clone https://github.com/philgoodvibe/aiai-mastermind-tools-and-skills.git
+cp -R aiai-mastermind-tools-and-skills/maya-starter ~/Documents/your-agency-content-team
+```
+
+Then open the folder in VS Code, drop your `My_Agency_Context.md` into `brain/`, and follow `JOB-DESCRIPTION.md`.
