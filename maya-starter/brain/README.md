@@ -18,7 +18,7 @@ If any of those sections are thin, MAYA will ask. Answer once, and it stays answ
 ## What else belongs in here
 
 - `compliance/` - the carrier-safe language rules. Starts as a template. You and MAYA fill it in for your carrier and state, and it grows every time a draft gets corrected.
-- `voice/` - your voice profile and your story bank. This is what separates your feed from every other agent's feed. See voice/README.md for the interview prompt that builds your 20 to 30 story bank.
+- `voice/` - your voice profile (required) and your story bank (optional). This is what separates your feed from every other agent's feed. The voice profile is the required core; set it up first. The story bank is optional but highly recommended and you can add it later. See voice/README.md for both interview prompts.
 
 ## Optional additions that make MAYA sharper
 

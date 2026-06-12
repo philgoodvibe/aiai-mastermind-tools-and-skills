@@ -30,7 +30,7 @@ Choose the complaint that scores highest on: how often it appears, how emotional
 
 - **Hook:** use their words, or a sharpened version of them. "You need a COI by 8 AM and your agent's office is closed" outperforms "We offer responsive service."
 - **Visual concept:** show the feeling of the problem moment (the unanswered phone, the 11 PM paperwork, the confused renewal letter). One image, one emotion. Pass this to image-brand.
-- **Copy:** PAS is the default frame here. Problem (their words), Agitate (the real cost of living with it), Solution (how the agency handles it, with a story from `brain/voice/story-bank.md` if one fits).
+- **Copy:** PAS is the default frame here. Problem (their words), Agitate (the real cost of living with it), Solution (how the agency handles it). If `brain/voice/story-bank.md` exists and a story fits, weave one in. If it does not exist, write the solution without a personal anecdote rather than inventing one.
 
 ## Step 5: Land the agency value proposition
 

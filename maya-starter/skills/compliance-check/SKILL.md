@@ -30,7 +30,7 @@ Walk the knowledge base top to bottom. At minimum:
 - Competitor or carrier named negatively, or implied identifiably
 - Carrier-specific rules (section 2), state and licensing rules (section 3), agency red lines (section 4)
 - Banned phrases log (section 6): exact and near matches
-- Stories: real, sourced from brain/voice/story-bank.md, names removed
+- Stories: real, names removed. Any personal story must trace to brain/voice/story-bank.md. If that file does not exist, no personal story should appear; an invented anecdote is a FAIL
 - Client language used where the brain calls for it
 
 ## Step 4: Rule and report
