@@ -1,0 +1,13 @@
+{
+  "name": "robonuggets",
+  "owner": {
+    "name": "RoboNuggets"
+  },
+  "plugins": [
+    {
+      "name": "model-router",
+      "source": "./",
+      "description": "Run Claude Code sessions, workers, and subagents on any model your subscriptions cover - one local proxy, zero API keys. Ships the /fabsol orchestrator + worker build flow."
+    }
+  ]
+}

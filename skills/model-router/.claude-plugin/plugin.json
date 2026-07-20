@@ -1,0 +1,15 @@
+{
+  "name": "model-router",
+  "displayName": "Model Router",
+  "version": "1.1.0",
+  "description": "Run Claude Code sessions, workers, and subagents on any model your subscriptions cover - one local proxy, zero API keys. Ships the /fabsol orchestrator + worker build flow.",
+  "author": {
+    "name": "RoboNuggets"
+  },
+  "repository": "https://github.com/robonuggets/model-router",
+  "license": "CC-BY-4.0",
+  "keywords": ["models", "routing", "proxy", "orchestrator", "fabsol"],
+  "commands": ["./commands/"],
+  "agents": ["./agents/"],
+  "skills": "./skills/"
+}

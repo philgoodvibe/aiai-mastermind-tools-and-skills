@@ -28,6 +28,19 @@ It enforces the things that are easy to get wrong:
 
 Auto-triggers on "generate / create / make an image"; also ships an optional `/gpt-image` slash command. Requires the Codex CLI installed and signed in to ChatGPT.
 
+### 🔀 [`model-router`](skills/model-router) — run Claude Code builds on the subscriptions you already pay for
+
+Adds a local "switchboard" ([CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI)) that holds your OTHER subscription logins — ChatGPT, Gemini, Grok, Kimi — so Claude Code can send work to those models with **no API keys and no per-token bills**. Repackages the [RoboNuggets model-router plugin](https://github.com/robonuggets/model-router) (CC BY 4.0) with a one-command installer.
+
+What you get after install:
+- **`/fabsol <brief>`** — the flagship flow: Claude plans, specs, and verifies while GPT-5.6 Sol does 100% of the building (≈33% cheaper than Claude building alone in the upstream benchmark),
+- **`/sol <task>`** — one-shot any task on the routed model from inside a normal Claude session,
+- **`/codex-usage`** — your ChatGPT/Codex weekly limit bars (percent used, reset times) without leaving Claude Code,
+- **SolFab** — the reverse direction: say `solfab: <brief>` in Codex (ChatGPT app / VSCode) and it hands the brief to Claude, which orchestrates while Sol builds — remote build dispatch from your phone,
+- full routed sessions via `scripts/session.sh` / `scripts/vscode.sh`.
+
+Your Claude login never touches the proxy (that keeps you inside Anthropic's terms), and all logins stay on your machine. Setup is agent-runnable: see the install prompt below.
+
 ## Install
 
 **Claude Code** (personal skills):
@@ -46,6 +59,14 @@ cp aiai-mastermind-tools-and-skills/skills/gpt-image/gpt-image.command.md ~/.cla
 Then just ask: *"build a wiki LLM from these PDFs"* or *"generate a hero image of …"* and the matching skill activates. (`gpt-image` needs the Codex CLI installed and signed in to ChatGPT via `codex login`.)
 
 **Other agents:** copy the skill folder into your agent's skills directory (e.g. `~/.agents/skills/` for Codex), or point your agent at `skills/wiki-llm/SKILL.md`.
+
+**model-router** is a full setup, not a copy-paste skill — paste this into Claude Code and it does the rest (one browser sign-in needed):
+
+```
+Clone https://github.com/philgoodvibe/aiai-mastermind-tools-and-skills and follow
+skills/model-router/INSTALL.md to set up FabSol. Do every step yourself, and tell
+me when you need me to approve the browser sign-in.
+```
 
 ## License
 
