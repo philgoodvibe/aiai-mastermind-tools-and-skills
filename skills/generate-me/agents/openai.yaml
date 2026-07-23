@@ -1,0 +1,11 @@
+interface:
+  display_name: "Generate {{OWNER_NAME}}"
+  short_description: "Create images of the skill owner while preserving their real facial identity."
+  default_prompt: "Use the generate-me skill to create the requested image of {{OWNER_NAME}}, preserving their identity from the configured original reference photos."
+policy:
+  products:
+    - chatgpt
+    - codex
+    - api
+    - atlas
+  allow_implicit_invocation: true

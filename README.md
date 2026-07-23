@@ -28,6 +28,16 @@ It enforces the things that are easy to get wrong:
 
 Auto-triggers on "generate / create / make an image"; also ships an optional `/gpt-image` slash command. Requires the Codex CLI installed and signed in to ChatGPT.
 
+### 📸 [`generate-me`](skills/generate-me), generate images of yourself while preserving your real facial identity
+
+A **blank, personalizable template** for generating images of the skill owner across photoreal, illustrated, cartoon, cinematic and stylized scenes. It intentionally ships with no photos and no personal details. Point Claude Code, Codex or another coding agent at it, and the agent customizes it for the member: it sorts about five photos into identity slots, writes an identity profile from what it observes, runs a test image and grades it. Setup takes about fifteen minutes.
+
+It ships with:
+- three generation paths: an OpenAI image model through the model-router, a Google Gemini image model through the same router, and the Codex CLI built-in image tool as a fallback when no router is available,
+- a bundled health check that reports which generation paths are available,
+- parallel router generation that sends the same prompt to both image models at the same time, producing two versions to compare without running them one after another,
+- a fully agent-runnable setup with step-by-step instructions in [`SETUP.md`](skills/generate-me/SETUP.md).
+
 ### 🔀 [`model-router`](skills/model-router) — run Claude Code builds on the subscriptions you already pay for
 
 Adds a local "switchboard" ([CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI)) that holds your OTHER subscription logins — ChatGPT, Gemini, Grok, Kimi — so Claude Code can send work to those models with **no API keys and no per-token bills**. Repackages the [RoboNuggets model-router plugin](https://github.com/robonuggets/model-router) (CC BY 4.0) with a one-command installer.
@@ -43,6 +53,14 @@ Your Claude login never touches the proxy (that keeps you inside Anthropic's ter
 
 ## Install
 
+**Tip:** You can grab a single skill folder instead of cloning the whole repository:
+
+```bash
+curl -L https://github.com/philgoodvibe/aiai-mastermind-tools-and-skills/archive/refs/heads/main.tar.gz | tar -xz --strip-components=2 '*/skills/generate-me'
+```
+
+Swap the skill name at the end of that command to grab any skill in this repository.
+
 **Claude Code** (personal skills):
 
 ```bash
@@ -54,6 +72,9 @@ cp -R aiai-mastermind-tools-and-skills/skills/wiki-llm ~/.claude/skills/wiki-llm
 # gpt-image (+ optional /gpt-image slash command)
 cp -R aiai-mastermind-tools-and-skills/skills/gpt-image ~/.claude/skills/gpt-image
 cp aiai-mastermind-tools-and-skills/skills/gpt-image/gpt-image.command.md ~/.claude/commands/gpt-image.md
+
+# generate-me
+cp -R aiai-mastermind-tools-and-skills/skills/generate-me ~/.claude/skills/generate-me
 ```
 
 Then just ask: *"build a wiki LLM from these PDFs"* or *"generate a hero image of …"* and the matching skill activates. (`gpt-image` needs the Codex CLI installed and signed in to ChatGPT via `codex login`.)
